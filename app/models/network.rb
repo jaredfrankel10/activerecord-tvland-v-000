@@ -1,7 +1,9 @@
 class Network < ActiveRecord::Base
-  has_many :shows
-
-  def sorry
-    "We're sorry about passing on John Mulaney's pilot"
-  end
+  has_many :characters
+   has_many :actors, through: :shows
+   belongs_to :network
+ 
+   def build_network(network)
+     self.network = Network.new(network)
+   end
 end
